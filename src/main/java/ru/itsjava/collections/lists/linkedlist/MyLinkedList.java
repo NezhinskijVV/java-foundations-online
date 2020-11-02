@@ -5,7 +5,7 @@ public class MyLinkedList {
     private Node head;
 
     public int size() {
-        return 0;
+        return 100;
     }
 
     public boolean isEmpty() {
@@ -50,8 +50,52 @@ public class MyLinkedList {
 
     }
 
+    // СТРОКА1 -> null
+    // СТРОКА1 -> СТРОКА2 -> СТРОКА3 -> null
     public Object remove(int index) {
-        return null;
+        checkIndex(index);
+        if (index == 0) {
+            Object resValue = head.getValue();
+            if (head.getNext() == null) {
+                head = null;
+            } else {
+                head = head.getNext();
+            }
+            return resValue;
+        }
+        Node curNode = head;
+        Node prevNode = head;
+        int count = 0;
+        while ((curNode = curNode.getNext()) != null) {
+            count++;
+            if (count == index) {
+                break;
+            }
+            prevNode = prevNode.getNext();
+        }
+        Object resValue = curNode.getValue();
+
+        if (curNode.getNext() == null) {
+            prevNode.setNext(null);
+        } else {
+            prevNode.setNext(curNode.getNext());
+            curNode.setNext(null);
+        }
+
+        return resValue;
+    }
+
+    private void checkIndex(int index) {
+        if (!isCorrectIndex(index)) {
+            throw new ArrayIndexOutOfBoundsException("Некорректный индекс");
+        }
+    }
+
+    private boolean isCorrectIndex(int index) {
+        if ((index > -1) || (index < size())) {
+            return true;
+        }
+        return false;
     }
 
     public int indexOf(Object o) {
