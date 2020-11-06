@@ -16,8 +16,11 @@ public class MyLinkedListPractice {
         System.out.println("list = " + list);
 
 
-        list.remove(2);
-        System.out.println("list = " + list);
+//        list.remove(2);
+//        System.out.println("list = " + list);
+
+        System.out.println("list.remove(\"Строка 4\") = " + list.remove("Строка 4"));
+        System.out.println(list);
 
     }
 }
