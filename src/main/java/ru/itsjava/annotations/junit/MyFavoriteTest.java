@@ -2,6 +2,11 @@ package ru.itsjava.annotations.junit;
 
 public class MyFavoriteTest {
 
+    @BeforeAll
+    public void beforeAllMethod(){
+        System.out.println("BEFORE ALL");
+    }
+
     @Test
     public void test1(){}
 
